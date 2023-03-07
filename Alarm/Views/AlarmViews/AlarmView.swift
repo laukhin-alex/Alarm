@@ -11,9 +11,6 @@ struct AlarmView: View {
     @State private var presentingSingleAlarm = false
     @EnvironmentObject var alarmVM: AlarmViewModel
 
-
-
-//    var weekDays: [String] = ["Вт", "Ср"]
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
     }
@@ -58,24 +55,48 @@ struct AlarmView: View {
                                 VStack {
                                     HStack {
                                         Text(alarmVM.timeFormatter.string(from: alarm.time))
-//                                        Text(timeFormatter.string(from: alarm.time))
-//                                        Text(alarm.time.formatted(.dateTime.minute().hour(.twoDigits(amPM: .omitted))))
                                             .font(.system(size: 60))
-
                                         Spacer()
                                         Toggle("Будильник включен", isOn: $alarm.isOn)
                                             .labelsHidden()
                                             .tint(.green)
                                     }
-
                                     HStack {
                                         if alarm.weekDays != [] {
                                             Text(alarm.alarmName == "" ? "Будильник," : "\(alarm.alarmName),")
-                                            ForEach(alarm.weekDays, id: \.id) { day in
-                                                Text(String(day.shortNameOfTheDay))
+                                            if alarm.weekDays.count == 1 {
+                                                ForEach(alarm.weekDays, id: \.id) { day in
+                                                    Text(day.nameOfTheDay)
+                                                }
+                                            } else if alarm.weekDays.count == 7 {
+                                                Text("Каждый день")
+                                            } else if (
+                                                alarm.weekDays.contains { $0.id != 1 } &&
+                                                alarm.weekDays.contains { $0.id != 2 } &&
+                                                alarm.weekDays.contains { $0.id != 3 } &&
+                                                alarm.weekDays.contains { $0.id != 4 } &&
+                                                alarm.weekDays.contains { $0.id != 5 } &&
+                                                alarm.weekDays.contains { $0.id == 6 } &&
+                                                alarm.weekDays.contains { $0.id == 7 } &&
+                                                alarm.weekDays.count == 2
+                                            ) {
+                                                Text("Выходные")
+                                            } else if (
+                                                alarm.weekDays.contains { $0.id == 1 } &&
+                                                alarm.weekDays.contains { $0.id == 2 } &&
+                                                alarm.weekDays.contains { $0.id == 3 } &&
+                                                alarm.weekDays.contains { $0.id == 4 } &&
+                                                alarm.weekDays.contains { $0.id == 5 } &&
+                                                alarm.weekDays.contains { $0.id != 6 } &&
+                                                alarm.weekDays.contains { $0.id != 7 } &&
+                                                alarm.weekDays.count == 5
+                                            ) {
+                                                Text("Будние дни")
+                                            } else if alarm.weekDays.count > 1 {
+                                                ForEach(alarm.weekDays, id: \.id) { day in
+                                                    Text(day.shortNameOfTheDay)
+                                                }
                                             }
-                                           
-                                        
                                             Spacer()
                                         } else {
                                             Text(alarm.alarmName == "" ? "Будильник" : "\(alarm.alarmName)")
@@ -94,11 +115,9 @@ struct AlarmView: View {
                         }
                         .listStyle(.grouped)
                         .scrollContentBackground(.hidden)
-
                     }
                 }
                 Spacer()
-
             }
             .sheet(isPresented: $presentingSingleAlarm) {
                 SingleAlarmAddingView()
@@ -113,7 +132,6 @@ struct AlarmView: View {
                     }) {
                         Image(systemName: "plus")
                     }
-
                 }
             }
             .tint(.orange)

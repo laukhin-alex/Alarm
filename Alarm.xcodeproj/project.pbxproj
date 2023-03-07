@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1FD1FC5329B75B8500253994 /* MelodyViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1FC5229B75B8500253994 /* MelodyViews.swift */; };
 		1FD1FC5529B765CF00253994 /* DayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1FC5429B765CF00253994 /* DayModel.swift */; };
-		1FD5C8E629B65A4900C93FA9 /* SingleAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD5C8E529B65A4900C93FA9 /* SingleAlarmView.swift */; };
 		1FFBEF1829B4B38600D80D52 /* AlarmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFBEF1729B4B38600D80D52 /* AlarmApp.swift */; };
 		1FFBEF1A29B4B38600D80D52 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFBEF1929B4B38600D80D52 /* ContentView.swift */; };
 		1FFBEF1C29B4B38A00D80D52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FFBEF1B29B4B38A00D80D52 /* Assets.xcassets */; };
@@ -25,7 +24,6 @@
 /* Begin PBXFileReference section */
 		1FD1FC5229B75B8500253994 /* MelodyViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodyViews.swift; sourceTree = "<group>"; };
 		1FD1FC5429B765CF00253994 /* DayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayModel.swift; sourceTree = "<group>"; };
-		1FD5C8E529B65A4900C93FA9 /* SingleAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleAlarmView.swift; sourceTree = "<group>"; };
 		1FFBEF1429B4B38600D80D52 /* Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FFBEF1729B4B38600D80D52 /* AlarmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmApp.swift; sourceTree = "<group>"; };
 		1FFBEF1929B4B38600D80D52 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 			children = (
 				1FFBEF2929B4BCDD00D80D52 /* AlarmView.swift */,
 				1FFBEF2E29B4D18600D80D52 /* SingleAlarmAddingView.swift */,
-				1FD5C8E529B65A4900C93FA9 /* SingleAlarmView.swift */,
 				1FFBEF3329B4EA6E00D80D52 /* ReplayView.swift */,
 				1FD1FC5229B75B8500253994 /* MelodyViews.swift */,
 			);
@@ -202,7 +199,6 @@
 				1FFBEF3429B4EA6E00D80D52 /* ReplayView.swift in Sources */,
 				1FD1FC5329B75B8500253994 /* MelodyViews.swift in Sources */,
 				1FFBEF1A29B4B38600D80D52 /* ContentView.swift in Sources */,
-				1FD5C8E629B65A4900C93FA9 /* SingleAlarmView.swift in Sources */,
 				1FFBEF2A29B4BCDD00D80D52 /* AlarmView.swift in Sources */,
 				1FFBEF1829B4B38600D80D52 /* AlarmApp.swift in Sources */,
 				1FFBEF2C29B4CC5600D80D52 /* AlarmViewModel.swift in Sources */,

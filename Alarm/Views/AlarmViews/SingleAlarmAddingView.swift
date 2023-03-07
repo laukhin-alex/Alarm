@@ -79,75 +79,69 @@ struct SingleAlarmAddingView: View {
                                             }
                                         }
                                     }
-                                            .foregroundColor(.gray)
-                                    }
+                                    .foregroundColor(.gray)
                                 }
-
-                                HStack {
-
-                                    Text("Название")
-                                    Spacer()
-                                    // MARK: -  поправить
-                                    TextField("Будильник", text: $alarmName)
-                                        .keyboardType(.default)
-                                        .multilineTextAlignment(.trailing)
-
-                                }
-                                NavigationLink {
-                                    MelodyViews()
-                                } label: {
-                                    HStack {
-                                        Text("Мелодия")
-                                        Spacer()
-                                        Text(alarmVM.selectedMelody?.description ?? "ring")
-                                            .foregroundColor(.gray)
-                                    }
-                                }
-                                Toggle("Повторение сигнала", isOn: $replayIsOn)
-                                    .tint(.green)
                             }
-                            .foregroundColor(.white)
-                            .listRowBackground(Color.gray.opacity(0.1))
-                            .scrollContentBackground(.hidden)
+                            HStack {
+                                Text("Название")
+                                Spacer()
+                                TextField("Будильник", text: $alarmName)
+                                    .keyboardType(.default)
+                                    .multilineTextAlignment(.trailing)
+                            }
+                            NavigationLink {
+                                MelodyViews()
+                            } label: {
+                                HStack {
+                                    Text("Мелодия")
+                                    Spacer()
+                                    Text(alarmVM.selectedMelody?.description ?? "ring")
+                                        .foregroundColor(.gray)
+                                }
+                            }
+                            Toggle("Повторение сигнала", isOn: $replayIsOn)
+                                .tint(.green)
                         }
-                        Spacer()
+                        .foregroundColor(.white)
+                        .listRowBackground(Color.gray.opacity(0.1))
+                        .scrollContentBackground(.hidden)
                     }
-
+                    Spacer()
                 }
-
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button(action: {
-                            alarmVM.clearData()
-                            dismiss()
-                        }) {
-                            Text("Отменить")
-                        }
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            alarmVM.alarms.append(SingleAlarmModel(time: time, alarmName: alarmName, replayIsOn: replayIsOn, isOn: isOn, weekDays: alarmVM.sortedSelectedDays))
-                            print(alarmVM.alarms)
-                            alarmVM.clearData()
-                            dismiss()
-                        }) {
-                            Text("Сохранить")
-                        }
-                    }
-                }
-                .tint(.orange)
-                .scrollContentBackground(.hidden)
-                .navigationTitle("Будильник")
-                .navigationBarTitleDisplayMode(.inline)
             }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        alarmVM.clearData()
+                        dismiss()
+                    }) {
+                        Text("Отменить")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        alarmVM.alarms.append(SingleAlarmModel(time: time, alarmName: alarmName, replayIsOn: replayIsOn, isOn: isOn, weekDays: alarmVM.sortedSelectedDays))
+                        print(alarmVM.alarms)
+                        alarmVM.clearData()
+                        dismiss()
+                    }) {
+                        Text("Сохранить")
+                    }
+                }
+            }
+            .tint(.orange)
+            .scrollContentBackground(.hidden)
+            .navigationTitle("Будильник")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
+}
 
 
 
-    struct SingleAlarmAddingView_Previews: PreviewProvider {
-        static var previews: some View {
-            SingleAlarmAddingView()
-                .environmentObject(AlarmViewModel())
-        }
+struct SingleAlarmAddingView_Previews: PreviewProvider {
+    static var previews: some View {
+        SingleAlarmAddingView()
+            .environmentObject(AlarmViewModel())
     }
+}

@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
-// MARK: - разобраться с форматом данных
 
 final class AlarmViewModel: ObservableObject {
     @Published var alarms: [SingleAlarmModel] = []
     @Published var selectedDays = [Day]()
+    @Published var weekDays = [Day]()
+    @Published var selectedMelody: String? = "ring"
+
     var sortedSelectedDays: [Day] {
         get {
             selectedDays.sorted(by: { $0.id < $1.id })
@@ -19,11 +21,8 @@ final class AlarmViewModel: ObservableObject {
             selectedDays = newValue
         }
     }
-    @Published var weekDays = [Day]()
-//    @Published var dayNames = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"]
-//    @Published var dayNamesShort = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
+
     var melody = ["din don", "ring", "alarm"]
-    @Published var selectedMelody: String? = "ring"
 
     var timeFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -31,9 +30,7 @@ final class AlarmViewModel: ObservableObject {
         formatter.locale = Locale(identifier: "ru")
         return formatter
     }
-
-
-
+    
     init() {
         weekDays = [
             Day(id: 1, nameOfTheDay: "Каждый понедельник", shortNameOfTheDay: "Пн"),

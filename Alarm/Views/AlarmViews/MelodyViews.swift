@@ -14,7 +14,6 @@ struct MelodyViews: View {
         ZStack {
             Color.black
                 .ignoresSafeArea(.all)
-
             List {
                 ForEach(alarmVM.melody, id: \.self) { item in
                     SelectionCell(melody: item, selectedMelody: self.$alarmVM.selectedMelody)
@@ -34,7 +33,6 @@ struct SelectionCell: View {
     @Binding var selectedMelody: String?
 
     var body: some View {
-        
         HStack {
             Text(melody)
                 .foregroundColor(.white)
@@ -44,8 +42,8 @@ struct SelectionCell: View {
                     .foregroundColor(.accentColor)
             }
         }   .onTapGesture {
-                self.selectedMelody = self.melody
-            }
+            self.selectedMelody = self.melody
+        }
     }
 }
 
