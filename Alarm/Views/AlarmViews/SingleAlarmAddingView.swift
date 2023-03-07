@@ -10,7 +10,6 @@ import SwiftUI
 struct SingleAlarmAddingView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var alarmVM: AlarmViewModel
-    //    @EnvironmentObject var rVM: ReplayViewModel
     @State var time = Date()
     @State var replayIsOn = true
     @State var isOn = true
